@@ -8,7 +8,7 @@ import GetNames from "../../data/getNames"
 
 export default function FormCointainer() {
     return (<>
-        <form action={handleForm}>
+        <form className="flex flex-col w-[65rem]" action={handleForm}>
             <DefaultButtons />
             <SelectCategory />
             <TextForm />
@@ -19,6 +19,4 @@ function handleForm(args) {
     console.log("handled!");
     askGemini().then(e => console.log(e))
     console.log(GetNames());
-
-
 }
