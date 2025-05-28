@@ -8,7 +8,7 @@ export default async function askGemini() {
         contents:
             "Dam ci zestaw imion podzielonych na człony dwa. Będą one łączone bez spacji i służyły jako imię dla konia będą one miały tylko pierwszą duża literę, czyt. będą jednym słowem. Poniżej dopisze dodatkowe instrukcje, jednak chcę abyś jako output dał mi kombinacji całkowitych imion które będą stworzony wg wymadań podanych na końcu wiadomości. Pamiętaj że odbiora to polak który zna też dośc dobrze angielski, nie rob banalnych przykładów dla dzieci, tylko przemyślane. Imienie które łączone upperrcase ma byc tylko pierwszxa litera slowa i tak też będą czytane i rozumiane słowa wg poleceń - jako jedno słowo a nie zespół dwóch. Używaj słow popularnych, któych kombinacje będą fajne i łatwe a nie skomplikowane po angielsku. IN OUTPUT ONLY FIRST LETTER OF NAME MUST BE UPPERCASE, NOT ANOTHER."
             + GetNames()
-            + "Niech będą z owocami śmieszne"
+            + "Daj cute imiona do białego konia "
             + "Podaj mi maks 6 imion",
         config: {
             responseMimeType: "application/json",

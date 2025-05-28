@@ -1,12 +1,12 @@
 import Button from "../button"
 import TextHeader from "../TextHeader"
 
-export default function SelectCategory() {
+export default function SelectCategory(props) {
     return (<div className="flex flex-col items-center">
         <TextHeader text="Select name style convention" />
         <div className="flex gap-2">
-            <Button text="Default" />
-            <Button text="Old prefix" />
+            <Button style={props.style} id={0} onClick={() => props.setStyle({ id: 0, isActive: true })} text="Default" />
+            <Button style={props.style} id={1} onClick={() => props.setStyle({ id: 1, isActive: true })} text="Old prefix" />
         </div>
     </div>)
 }
