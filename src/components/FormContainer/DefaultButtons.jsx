@@ -5,7 +5,7 @@ export default function DefaultButtons(props) {
     return (
         <div className="flex flex-col items-center">
             <TextHeader text="✨Opcjonalnie: wybierz sugerowany styl✨" />
-            <div className="gap-2 flex">
+            <div className="gap-2 flex flex-wrap justify-center">
                 <Button id={0} style={props.style} onClick={() => props.setStyle({ id: 0, isActive: true })} text="Zabawne" />
                 <Button id={1} style={props.style} onClick={() => props.setStyle({ id: 1, isActive: true })} text="Słodkie" />
                 <Button id={2} style={props.style} onClick={() => props.setStyle({ id: 2, isActive: true })} text="Pieszczoliwe" />
