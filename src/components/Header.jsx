@@ -1,5 +1,5 @@
 export default function Header() {
     return (<>
-        <h1 className="text-5xl text-pink-300 my-4 leading-normal">Welcome to SSO name generator powered by AI! (Gemini)</h1>
+        <h1 className="text-4xl text-center text-pink-300 my-4 leading-normal">🐴Generator imion SSO🐴<br/> ❤️wersja dla Zuzi❤️</h1>
     </>)
 }
