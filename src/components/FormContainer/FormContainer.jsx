@@ -6,13 +6,13 @@ import ResponseContainer from "./ResponseContainer"
 
 // test
 import askGemini from '../../services/gemini'
-import GetNames from "../../data/getNames"
 
 export default function FormCointainer() {
     const [style, setStyle] = useState({ id: 999, isActive: false })
     const [defaultStyle, setDefaultStyle] = useState({ id: 999, isActive: true })
     const [question, setQuestion] = useState("")
     const [data, setData] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
 
     function handleForm(e) {
         e.preventDefault();
@@ -24,15 +24,19 @@ export default function FormCointainer() {
             alert("Zanim wygenerujesz imiona wpisz coś w pole tekstowe.")
             return
         }
+        setIsLoading(true)
         console.log(defaultStyle);
-        askGemini(question, style, defaultStyle).then(e => setData(e))
+        askGemini(question, style, defaultStyle).then(e => {
+            setData(e)
+            setIsLoading(false)
+        })
     }
     
     return (<>
         <form className="flex flex-col gap-2" onSubmit={handleForm}>
             <SelectCategory style={style} setStyle={setStyle} />
             <DefaultButtons style={defaultStyle} setStyle={setDefaultStyle} />
-            <TextForm inputVal={question} setInputVal={setQuestion} style={style} />
+            <TextForm inputVal={question} setInputVal={setQuestion} style={style} isLoading={isLoading} />
             <ResponseContainer data={data} />
         </form>
     </>)

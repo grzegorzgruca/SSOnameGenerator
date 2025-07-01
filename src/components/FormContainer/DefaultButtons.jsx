@@ -1,4 +1,4 @@
-import Button from "../button"
+import Button from "../Button"
 import TextHeader from "../TextHeader"
 
 export default function DefaultButtons(props) {
