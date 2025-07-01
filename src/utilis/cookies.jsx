@@ -12,8 +12,8 @@ export function setApiKeyCookie(apiKey, expirationDays = 7) {
   const date = new Date();
   date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
   const expires = "expires=" + date.toUTCString();
-  // Dodano atrybuty SameSite=Lax i Secure dla bezpieczeństwa
-  document.cookie = `apiKey=${encodeURIComponent(apiKey)};${expires};path=/;SameSite=Lax;Secure`;
+  // Usunięto atrybut Secure dla środowiska deweloperskiego
+  document.cookie = `apiKey=${encodeURIComponent(apiKey)};${expires};path=/;SameSite=Lax`;
   console.log("Klucz API został zapisany w cookie.");
 }
 
@@ -51,6 +51,6 @@ export function deleteApiKeyCookie() {
     console.warn("Cannot delete cookie: 'document' is not available.");
     return;
   }
-  document.cookie = "apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;SameSite=Lax;Secure";
+  document.cookie = "apiKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;SameSite=Lax";
   console.log("Klucz API został usunięty z cookie.");
 }

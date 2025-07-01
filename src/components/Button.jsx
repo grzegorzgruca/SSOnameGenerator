@@ -1,6 +1,5 @@
 export default function Button(props) {
     const type = props.type ?? "button";
-    const style = props.style ?? { id: null, name: null };
 
     return (
         <>
@@ -8,10 +7,17 @@ export default function Button(props) {
                 type={type}
                 onClick={props.onClick}
                 disabled={props.disabled}
-                className={`duration-400 ease-out hover:bg-pink-400 border hover:text-pink-200 border-pink-500 rounded-2xl py-1 px-3 
-                ${props.additionalStyle}
-                ${props.id === style.id ? "bg-pink-600 text-pink-200" : "bg-pink-200 text-pink-600"}
-                ${props.disabled ? "bg-gray-400 cursor-not-allowed" : ""}`}>
+                className={`
+                    px-6 py-2 font-semibold text-white rounded-full shadow-md
+                    bg-gradient-to-r from-pink-400 to-purple-400 
+                    hover:from-pink-500 hover:to-purple-500
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500
+                    transition-all duration-300 ease-in-out
+                    transform hover:scale-105
+                    ${props.additionalStyle}
+                    ${props.isSelected ? "ring-2 ring-white bg-gradient-to-r from-pink-500 to-purple-500 scale-105" : ""}
+                    ${props.disabled ? "bg-gray-400 cursor-not-allowed opacity-50" : ""}
+                `}>
                 {props.text}
             </button>
         </>)

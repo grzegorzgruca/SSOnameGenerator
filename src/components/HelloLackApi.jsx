@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { setApiKeyCookie } from '../utilis/cookies';
+import Button from './Button'; // Import nowego przycisku
 
 export default function HelloLackApi() {
     const [apiKeyInput, setApiKeyInput] = useState('');
@@ -11,7 +12,6 @@ export default function HelloLackApi() {
     const handleSubmit = () => {
         if (apiKeyInput.trim() !== '') {
             setApiKeyCookie(apiKeyInput);
-            // Odśwież stronę, aby App.jsx mógł ponownie sprawdzić cookie
             window.location.reload();
         } else {
             alert("Proszę wpisać klucz API.");
@@ -19,22 +19,29 @@ export default function HelloLackApi() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-pink-100">
-            <h1 className="text-3xl text-pink-500">Wpisz swój klucz API (Tylko raz!!!)</h1>
-            <p className="text-pink-400 mt-2">Just spytaj Grzesia to ci da jest potrzebny do działania strony</p>
-            <input
-                type="text"
-                value={apiKeyInput}
-                onChange={handleInputChange}
-                placeholder="Wpisz tutaj swój klucz API"
-                className="mt-4 p-2 border border-pink-300 rounded-md w-1/3 focus:ring-pink-500 focus:border-pink-500"
-            />
-            <button
-                onClick={handleSubmit}
-                className="mt-4 px-6 py-2 bg-pink-500 text-white rounded-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
-            >
-                Zapisz klucz API
-            </button>
+        <div className="flex flex-col items-center justify-center h-screen">
+            <div className='w-1/2 mx-auto p-12 text-center'>
+                <h1 className="text-3xl font-bold text-gray-800">Wpisz swój klucz API (Tylko raz!!!)</h1>
+                <p className="text-gray-600 mt-2">Spytaj Grzesia o klucz potrzebny do działania strony</p>
+                <input
+                    type="text"
+                    value={apiKeyInput}
+                    onChange={handleInputChange}
+                    placeholder="Wpisz tutaj swój klucz API"
+                    className="
+                        mt-6 w-full max-w-md px-4 py-2 rounded-full border-2 border-transparent 
+                        bg-white/50 text-gray-800 placeholder-gray-500
+                        focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent
+                        transition-all duration-300
+                    "
+                />
+                <div className="mt-6">
+                    <Button
+                        onClick={handleSubmit}
+                        text="Zapisz klucz API"
+                    />
+                </div>
+            </div>
         </div>
     );
 }

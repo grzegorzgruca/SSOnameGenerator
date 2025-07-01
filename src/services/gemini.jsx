@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { getApiKeyCookie } from '../utilis/cookies.jsx';
 import { SecondNames } from "../data/getNames.jsx";
 
-export default async function askGemini(question, style, defaultStyle) {
+export default async function askGemini(question, prefix, moodObj) {
     const apiKeyFromCookie = getApiKeyCookie();
 
     if (!apiKeyFromCookie) {
@@ -12,17 +12,16 @@ export default async function askGemini(question, style, defaultStyle) {
     const ai = new GoogleGenAI({ apiKey: apiKeyFromCookie });
 
     let mood = "";
-    if (defaultStyle) {
-        if (defaultStyle.id === 0) mood = "funny";
-        if (defaultStyle.id === 1) mood = "cute";
-        if (defaultStyle.id === 2) mood = "affectionate and brilliant";
-        if (defaultStyle.id === 3) mood = "serious and honorable";
+    if (moodObj) {
+        if (moodObj.id === 0) mood = "sweet";
+        if (moodObj.id === 1) mood = "funny";
+        if (moodObj.id === 2) mood = "serious";
     }
 
     const userRequest = question || "a beautiful horse";
     let prompt;
 
-    if (style && style.id === 1) {
+    if (prefix && prefix.id === 1) {
         // "OLD" style is active
         prompt = `You are an expert horse name generator. Your primary task is to create names based on the user's request, which is the highest priority.
         
@@ -56,7 +55,10 @@ export default async function askGemini(question, style, defaultStyle) {
         - Only the first letter of the name should be capitalized (e.g., "Starlight", not "StarLight").
         - The names must be creative and highly relevant to the user's request and the desired mood.
         - Provide the output in the specified JSON format.
-        Whatever of above instruction, the response must be en default english words from data from prompt`;
+        Whatever of above instruction, the response must be en default english words from data from prompt
+        ALWAYS CREATE NAMES FROM TWO PARTS
+        
+        `;
     }
     
     const response = await ai.models.generateContent({

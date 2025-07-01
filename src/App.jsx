@@ -11,7 +11,7 @@ function App() {
   }
 
   return (
-    <div className='bg-pink-100 w-1/2 mx-auto my-20 p-12 rounded-4xl'>
+    <div className="w-full max-w-2xl mx-auto my-8 sm:my-12 md:my-20 animate-fade-in-up">
       <Header />
       <FormContainer />
     </div>
